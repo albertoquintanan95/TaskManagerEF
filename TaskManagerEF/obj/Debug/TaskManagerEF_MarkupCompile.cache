@@ -1,0 +1,20 @@
+﻿TaskManagerEF
+
+
+winexe
+C#
+.cs
+C:\Users\sjpf1k\Documents\Visual Studio 2015\Projects\TaskManagerEF - Copy\TaskManagerEF\obj\Debug\
+TaskManagerEF
+none
+false
+DEBUG;TRACE
+C:\Users\sjpf1k\Documents\Visual Studio 2015\Projects\TaskManagerEF - Copy\TaskManagerEF\App.xaml
+12-1786445542
+2909889338
+53-146755248
+26779957776
+MainWindow.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;Views\AddProjectInformation.xaml;Views\AddProjectsView.xaml;Views\FinishedProjectsView.xaml;Views\HomeView.xaml;Views\PCView.xaml;Views\ProjectView.xaml;Views\SettingsView.xaml;Views\TasksView.xaml;Views\VendorChangesUpdate.xaml;
+
+True
+

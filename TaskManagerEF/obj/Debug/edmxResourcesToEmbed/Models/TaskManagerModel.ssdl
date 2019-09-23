@@ -1,0 +1,833 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TaskManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Attachments">
+    <Key>
+      <PropertyRef Name="idAttachment" />
+    </Key>
+    <Property Name="idAttachment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="attachment" Type="varbinary(max)" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="ext" Type="varchar" MaxLength="50" />
+    <Property Name="idProject" Type="int" />
+    <Property Name="idTask" Type="int" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="idComment" />
+    </Key>
+    <Property Name="idComment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="comment" Type="varchar(max)" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tasks.dbo.DOH' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DOH">
+          <Property Name="materialKey" Type="varchar" MaxLength="50" />
+          <Property Name="plant" Type="varchar" MaxLength="50" />
+          <Property Name="material" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar(max)" />
+          <Property Name="ADU" Type="int" />
+          <Property Name="stdPack" Type="int" />
+          <Property Name="dailyContainers" Type="int" />
+          <Property Name="weeklyContainers" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tasks.dbo.GRPT' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="GRPT">
+          <Property Name="vendorKey" Type="varchar" MaxLength="50" />
+          <Property Name="LO" Type="varchar" MaxLength="500" />
+          <Property Name="plant" Type="varchar" MaxLength="500" />
+          <Property Name="vendor" Type="varchar" MaxLength="500" />
+          <Property Name="duns" Type="varchar" MaxLength="500" />
+          <Property Name="shipperNumber" Type="varchar" MaxLength="500" />
+          <Property Name="CN" Type="varchar" MaxLength="500" />
+          <Property Name="vendorName" Type="varchar" MaxLength="500" />
+          <Property Name="GRPT" Type="varchar" MaxLength="500" />
+          <Property Name="newFixed" Type="varchar" MaxLength="500" />
+          <Property Name="newPTF" Type="varchar" MaxLength="500" />
+          <Property Name="comments" Type="varchar" MaxLength="500" />
+          <Property Name="GRPTStatus" Type="varchar" MaxLength="500" />
+          <Property Name="planningCalendar" Type="varchar" MaxLength="500" />
+          <Property Name="PCDesc" Type="varchar" MaxLength="500" />
+          <Property Name="PCS" Type="varchar" MaxLength="500" />
+          <Property Name="MOT" Type="varchar" MaxLength="500" />
+          <Property Name="TMS" Type="varchar" MaxLength="500" />
+          <Property Name="NPSExcepcion" Type="varchar" MaxLength="500" />
+          <Property Name="VLKPricing" Type="varchar" MaxLength="500" />
+          <Property Name="serviceMode" Type="varchar" MaxLength="500" />
+          <Property Name="FCA" Type="varchar" MaxLength="500" />
+        </EntityType>-->
+  <EntityType Name="Members">
+    <Key>
+      <PropertyRef Name="idMember" />
+    </Key>
+    <Property Name="idMember" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="displayName" Type="varchar" MaxLength="50" />
+    <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="netID" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tasks.dbo.newVendors' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="newVendors">
+          <Property Name="vendor" Type="varchar" MaxLength="50" />
+          <Property Name="vendorName" Type="varchar" MaxLength="50" />
+          <Property Name="DUNS" Type="varchar" MaxLength="50" />
+          <Property Name="SRT" Type="varchar" MaxLength="50" />
+          <Property Name="vfrom" Type="date" />
+          <Property Name="vto" Type="date" />
+          <Property Name="PTF" Type="varchar" MaxLength="50" />
+          <Property Name="newPTF" Type="varchar" MaxLength="50" />
+          <Property Name="newFixed" Type="varchar" MaxLength="50" />
+          <Property Name="GRPT" Type="varchar" MaxLength="50" />
+          <Property Name="planningCalendar" Type="varchar" MaxLength="50" />
+          <Property Name="LOImplemented" Type="varchar" MaxLength="50" />
+          <Property Name="orderingSystem" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tasks.dbo.oldVendors' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="oldVendors">
+          <Property Name="vendor" Type="varchar" MaxLength="50" />
+          <Property Name="vendorName" Type="varchar" MaxLength="50" />
+          <Property Name="DUNS" Type="varchar" MaxLength="50" />
+          <Property Name="SRT" Type="varchar" MaxLength="50" />
+          <Property Name="vfrom" Type="date" />
+          <Property Name="vto" Type="date" />
+          <Property Name="PTF" Type="varchar" MaxLength="50" />
+          <Property Name="newPTF" Type="varchar" MaxLength="50" />
+          <Property Name="newFixed" Type="varchar" MaxLength="50" />
+          <Property Name="GRPT" Type="varchar" MaxLength="50" />
+          <Property Name="planningCalendar" Type="varchar" MaxLength="50" />
+          <Property Name="LOImplemented" Type="varchar" MaxLength="50" />
+          <Property Name="orderingSystem" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tasks.dbo.OrderingTracker' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="OrderingTracker">
+          <Property Name="purchaseOrigin" Type="varchar" MaxLength="500" />
+          <Property Name="vendorNumber" Type="varchar" MaxLength="500" />
+          <Property Name="DUNS" Type="varchar" MaxLength="500" />
+          <Property Name="vendorName" Type="varchar" MaxLength="500" />
+          <Property Name="VN" Type="varchar" MaxLength="500" />
+          <Property Name="OA" Type="varchar" MaxLength="500" />
+          <Property Name="FA" Type="varchar" MaxLength="500" />
+          <Property Name="profile" Type="varchar" MaxLength="500" />
+          <Property Name="purchaseGroup" Type="varchar" MaxLength="500" />
+          <Property Name="buyerName" Type="varchar" MaxLength="500" />
+          <Property Name="totalPNSA" Type="varchar" MaxLength="500" />
+          <Property Name="TotalPNSB" Type="varchar" MaxLength="500" />
+          <Property Name="LOImplemented" Type="varchar" MaxLength="500" />
+          <Property Name="leanOrdering" Type="varchar" MaxLength="500" />
+          <Property Name="SRT" Type="varchar" MaxLength="500" />
+          <Property Name="plants" Type="varchar" MaxLength="50" />
+          <Property Name="scoreCard" Type="varchar" MaxLength="500" />
+          <Property Name="supplyChainMember" Type="varchar" MaxLength="500" />
+          <Property Name="orderingSystem" Type="varchar" MaxLength="500" />
+          <Property Name="configuredPort" Type="varchar" MaxLength="500" />
+          <Property Name="previousAPV" Type="varchar" MaxLength="500" />
+          <Property Name="previousAPVrevision" Type="varchar" MaxLength="500" />
+          <Property Name="YTD" Type="varchar" MaxLength="500" />
+          <Property Name="YTDDeeds" Type="varchar" MaxLength="500" />
+          <Property Name="YTDDocs" Type="varchar" MaxLength="500" />
+          <Property Name="YTDCable" Type="varchar" MaxLength="500" />
+          <Property Name="YTDRevision" Type="varchar" MaxLength="500" />
+          <Property Name="comodity" Type="varchar" MaxLength="500" />
+          <Property Name="notes" Type="varchar(max)" />
+        </EntityType>-->
+  <EntityType Name="ProjectComments">
+    <Key>
+      <PropertyRef Name="idProjectComment" />
+    </Key>
+    <Property Name="idProjectComment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProject" Type="int" Nullable="false" />
+    <Property Name="idComment" Type="int" Nullable="false" />
+    <Property Name="idMember" Type="int" />
+  </EntityType>
+  <EntityType Name="ProjectMembers">
+    <Key>
+      <PropertyRef Name="idProjectMember" />
+    </Key>
+    <Property Name="idProjectMember" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProject" Type="int" Nullable="false" />
+    <Property Name="idMember" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Projects">
+    <Key>
+      <PropertyRef Name="idProject" />
+    </Key>
+    <Property Name="idProject" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="projectName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="projectDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="startDate" Type="datetime" />
+    <Property Name="endDate" Type="datetime" />
+    <Property Name="area" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProjectTasks">
+    <Key>
+      <PropertyRef Name="idProjectTask" />
+    </Key>
+    <Property Name="idProjectTask" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProject" Type="int" Nullable="false" />
+    <Property Name="idTask" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tasks.dbo.Sourcelist' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Sourcelist">
+          <Property Name="materialKey" Type="varchar" MaxLength="50" />
+          <Property Name="vendorKey" Type="varchar" MaxLength="50" />
+          <Property Name="plnt" Type="varchar" MaxLength="50" />
+          <Property Name="material" Type="varchar" MaxLength="50" />
+          <Property Name="created on" Type="varchar(max)" />
+          <Property Name="valid from" Type="varchar(max)" />
+          <Property Name="valid to" Type="varchar(max)" />
+          <Property Name="vendor" Type="varchar" MaxLength="50" />
+          <Property Name="agreement" Type="varchar(max)" />
+          <Property Name="item" Type="varchar(max)" />
+          <Property Name="f" Type="varchar(max)" />
+          <Property Name="ppl." Type="varchar(max)" />
+          <Property Name="MRP" Type="varchar(max)" />
+          <Property Name="oun" Type="varchar(max)" />
+          <Property Name="name 1" Type="varchar(max)" />
+          <Property Name="name 2" Type="varchar(max)" />
+          <Property Name="pgr" Type="varchar(max)" />
+          <Property Name="typ" Type="varchar(max)" />
+          <Property Name="MRPC" Type="varchar(max)" />
+          <Property Name="LS" Type="varchar(max)" />
+          <Property Name="procType" Type="varchar(max)" />
+          <Property Name="SPT" Type="varchar(max)" />
+          <Property Name="rounding val." Type="varchar(max)" />
+          <Property Name="bun" Type="varchar(max)" />
+          <Property Name="min. Lot Sze" Type="varchar(max)" />
+          <Property Name="cal" Type="varchar(max)" />
+          <Property Name="planning time fence" Type="varchar(max)" />
+          <Property Name="GRT" Type="varchar(max)" />
+        </EntityType>-->
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="idTask" />
+    </Key>
+    <Property Name="idTask" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="taskName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="TaskDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="startDate" Type="datetime" />
+    <Property Name="endDate" Type="datetime" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TaskComments">
+    <Key>
+      <PropertyRef Name="idTaskComment" />
+    </Key>
+    <Property Name="idTaskComment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idTask" Type="int" Nullable="false" />
+    <Property Name="idComment" Type="int" Nullable="false" />
+    <Property Name="idMember" Type="int" />
+  </EntityType>
+  <EntityType Name="TaskMembers">
+    <Key>
+      <PropertyRef Name="idTaskMember" />
+    </Key>
+    <Property Name="idTaskMember" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idTask" Type="int" />
+    <Property Name="idMember" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tasks.dbo.tmpMembers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tmpMembers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="50" />
+    <Property Name="lastName" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="netID" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tasks.dbo.VChanges' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VChanges">
+    <Key>
+      <PropertyRef Name="idVC" />
+    </Key>
+    <Property Name="idVC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="plant" Type="varchar" MaxLength="50" />
+    <Property Name="material" Type="varchar" MaxLength="50" />
+    <Property Name="projectName" Type="varchar(max)" />
+    <Property Name="oldVendor" Type="varchar" MaxLength="500" />
+    <Property Name="newVendor" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tasks.dbo.MembersArea' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MembersArea">
+    <Key>
+      <PropertyRef Name="idMember" />
+      <PropertyRef Name="firstName" />
+      <PropertyRef Name="lastName" />
+    </Key>
+    <Property Name="idMember" Type="int" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="area" Type="varchar" MaxLength="50" />
+    <Property Name="displayName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tasks.dbo.PartNumbers' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PartNumbers">
+          <Property Name="plant" Type="varchar" MaxLength="50" />
+          <Property Name="material" Type="varchar" MaxLength="50" />
+          <Property Name="ADU" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="stdPack" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="dailyContainers" Type="int" />
+          <Property Name="weeklyContainers" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tasks.dbo.ProjectAttachments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ProjectAttachments">
+    <Key>
+      <PropertyRef Name="idAttachment" />
+      <PropertyRef Name="idProject" />
+      <PropertyRef Name="projectName" />
+    </Key>
+    <Property Name="idAttachment" Type="int" Nullable="false" />
+    <Property Name="attachment" Type="varbinary(max)" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="idProject" Type="int" Nullable="false" />
+    <Property Name="projectName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="area" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tasks.dbo.ProjectCommentsView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ProjectCommentsView">
+    <Key>
+      <PropertyRef Name="idProject" />
+      <PropertyRef Name="projectName" />
+      <PropertyRef Name="idComment" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="comment" />
+      <PropertyRef Name="firstName" />
+      <PropertyRef Name="lastName" />
+    </Key>
+    <Property Name="idProject" Type="int" Nullable="false" />
+    <Property Name="projectName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="idComment" Type="int" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="comment" Type="varchar(max)" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="displayName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tasks.dbo.ProjectMembersView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ProjectMembersView">
+    <Key>
+      <PropertyRef Name="projectName" />
+      <PropertyRef Name="projectDescription" />
+      <PropertyRef Name="firstName" />
+      <PropertyRef Name="lastName" />
+      <PropertyRef Name="idProject" />
+      <PropertyRef Name="idMember" />
+      <PropertyRef Name="netID" />
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="projectName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="projectDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="area" Type="varchar" MaxLength="50" />
+    <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idProject" Type="int" Nullable="false" />
+    <Property Name="idMember" Type="int" Nullable="false" />
+    <Property Name="netID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="endDate" Type="datetime" />
+    <Property Name="displayName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tasks.dbo.TaskAttachments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TaskAttachments">
+    <Key>
+      <PropertyRef Name="idAttachment" />
+      <PropertyRef Name="idProject" />
+      <PropertyRef Name="projectName" />
+      <PropertyRef Name="idTask" />
+      <PropertyRef Name="taskName" />
+    </Key>
+    <Property Name="idAttachment" Type="int" Nullable="false" />
+    <Property Name="attachment" Type="varbinary(max)" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="idProject" Type="int" Nullable="false" />
+    <Property Name="projectName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="idTask" Type="int" Nullable="false" />
+    <Property Name="taskName" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tasks.dbo.TaskCommentsView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TaskCommentsView">
+    <Key>
+      <PropertyRef Name="idTask" />
+      <PropertyRef Name="taskName" />
+      <PropertyRef Name="comment" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="idComment" />
+      <PropertyRef Name="firstName" />
+      <PropertyRef Name="lastName" />
+    </Key>
+    <Property Name="idTask" Type="int" Nullable="false" />
+    <Property Name="taskName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="comment" Type="varchar(max)" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="idComment" Type="int" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="displayName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tasks.dbo.TaskHistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TaskHistory">
+    <Key>
+      <PropertyRef Name="comment" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="idTask" />
+    </Key>
+    <Property Name="comment" Type="varchar(max)" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="idTask" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tasks.dbo.TaskMembersView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TaskMembersView">
+    <Key>
+      <PropertyRef Name="idMember" />
+      <PropertyRef Name="idTask" />
+      <PropertyRef Name="taskName" />
+      <PropertyRef Name="TaskDescription" />
+      <PropertyRef Name="firstName" />
+      <PropertyRef Name="lastName" />
+      <PropertyRef Name="email" />
+      <PropertyRef Name="netID" />
+      <PropertyRef Name="projectName" />
+      <PropertyRef Name="idProject" />
+    </Key>
+    <Property Name="idMember" Type="int" Nullable="false" />
+    <Property Name="idTask" Type="int" Nullable="false" />
+    <Property Name="taskName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="TaskDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="endDate" Type="datetime" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="startDate" Type="datetime" />
+    <Property Name="netID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="displayName" Type="varchar" MaxLength="50" />
+    <Property Name="projectName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="idProject" Type="int" Nullable="false" />
+    <Property Name="area" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tasks.dbo.TasksView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TasksView">
+    <Key>
+      <PropertyRef Name="taskName" />
+      <PropertyRef Name="TaskDescription" />
+      <PropertyRef Name="projectName" />
+      <PropertyRef Name="idTask" />
+      <PropertyRef Name="idProject" />
+    </Key>
+    <Property Name="taskName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="TaskDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="startDate" Type="datetime" />
+    <Property Name="endDate" Type="datetime" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="projectName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="area" Type="varchar" MaxLength="50" />
+    <Property Name="idTask" Type="int" Nullable="false" />
+    <Property Name="idProject" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'tasks.dbo.VendorChanges' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="VendorChanges">
+          <Property Name="plant" Type="varchar" MaxLength="50" />
+          <Property Name="material" Type="varchar" MaxLength="50" />
+          <Property Name="vendor" Type="varchar" MaxLength="500" />
+          <Property Name="vendorName" Type="varchar" MaxLength="500" />
+          <Property Name="agreement" Type="varchar(max)" />
+          <Property Name="item" Type="varchar(max)" />
+          <Property Name="on" Type="varchar(max)" />
+          <Property Name="from" Type="varchar(max)" />
+          <Property Name="to" Type="varchar(max)" />
+          <Property Name="GRPT" Type="varchar" MaxLength="500" />
+          <Property Name="newFixed" Type="varchar" MaxLength="500" />
+          <Property Name="PTF" Type="varchar(max)" />
+          <Property Name="newPTF" Type="varchar" MaxLength="500" />
+          <Property Name="planningCalendar" Type="varchar" MaxLength="500" />
+          <Property Name="DUNS" Type="varchar" MaxLength="500" />
+          <Property Name="LOImplemented" Type="varchar" MaxLength="500" />
+          <Property Name="SRT" Type="varchar" MaxLength="500" />
+          <Property Name="orderingSystem" Type="varchar" MaxLength="500" />
+          <Property Name="CN" Type="varchar" MaxLength="500" />
+          <Property Name="PCDesc" Type="varchar" MaxLength="500" />
+        </EntityType>-->
+  <Association Name="FK_Attachments_Projects">
+    <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
+    <End Role="Attachments" Type="Self.Attachments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="idProject" />
+      </Principal>
+      <Dependent Role="Attachments">
+        <PropertyRef Name="idProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Attachments_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+    <End Role="Attachments" Type="Self.Attachments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="idTask" />
+      </Principal>
+      <Dependent Role="Attachments">
+        <PropertyRef Name="idTask" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectComments_Comments">
+    <End Role="Comments" Type="Self.Comments" Multiplicity="1" />
+    <End Role="ProjectComments" Type="Self.ProjectComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comments">
+        <PropertyRef Name="idComment" />
+      </Principal>
+      <Dependent Role="ProjectComments">
+        <PropertyRef Name="idComment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectComments_Members">
+    <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+    <End Role="ProjectComments" Type="Self.ProjectComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="idMember" />
+      </Principal>
+      <Dependent Role="ProjectComments">
+        <PropertyRef Name="idMember" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectComments_Projects">
+    <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+    <End Role="ProjectComments" Type="Self.ProjectComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="idProject" />
+      </Principal>
+      <Dependent Role="ProjectComments">
+        <PropertyRef Name="idProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectMembers_Members">
+    <End Role="Members" Type="Self.Members" Multiplicity="1" />
+    <End Role="ProjectMembers" Type="Self.ProjectMembers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="idMember" />
+      </Principal>
+      <Dependent Role="ProjectMembers">
+        <PropertyRef Name="idMember" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectMembers_Projects">
+    <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+    <End Role="ProjectMembers" Type="Self.ProjectMembers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="idProject" />
+      </Principal>
+      <Dependent Role="ProjectMembers">
+        <PropertyRef Name="idProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectTasks_Projects">
+    <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+    <End Role="ProjectTasks" Type="Self.ProjectTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="idProject" />
+      </Principal>
+      <Dependent Role="ProjectTasks">
+        <PropertyRef Name="idProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectTasks_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="ProjectTasks" Type="Self.ProjectTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="idTask" />
+      </Principal>
+      <Dependent Role="ProjectTasks">
+        <PropertyRef Name="idTask" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskComments_Comments">
+    <End Role="Comments" Type="Self.Comments" Multiplicity="1" />
+    <End Role="TaskComments" Type="Self.TaskComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comments">
+        <PropertyRef Name="idComment" />
+      </Principal>
+      <Dependent Role="TaskComments">
+        <PropertyRef Name="idComment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskComments_Members">
+    <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+    <End Role="TaskComments" Type="Self.TaskComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="idMember" />
+      </Principal>
+      <Dependent Role="TaskComments">
+        <PropertyRef Name="idMember" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskComments_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="TaskComments" Type="Self.TaskComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="idTask" />
+      </Principal>
+      <Dependent Role="TaskComments">
+        <PropertyRef Name="idTask" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskMembers_Members">
+    <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+    <End Role="TaskMembers" Type="Self.TaskMembers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="idMember" />
+      </Principal>
+      <Dependent Role="TaskMembers">
+        <PropertyRef Name="idMember" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskMembers_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+    <End Role="TaskMembers" Type="Self.TaskMembers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="idTask" />
+      </Principal>
+      <Dependent Role="TaskMembers">
+        <PropertyRef Name="idTask" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TaskManagerModelStoreContainer">
+    <EntitySet Name="Attachments" EntityType="Self.Attachments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectComments" EntityType="Self.ProjectComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectMembers" EntityType="Self.ProjectMembers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectTasks" EntityType="Self.ProjectTasks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskComments" EntityType="Self.TaskComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskMembers" EntityType="Self.TaskMembers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tmpMembers" EntityType="Self.tmpMembers" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tmpMembers].[id] AS [id], 
+    [tmpMembers].[firstName] AS [firstName], 
+    [tmpMembers].[lastName] AS [lastName], 
+    [tmpMembers].[email] AS [email], 
+    [tmpMembers].[netID] AS [netID]
+    FROM [dbo].[tmpMembers] AS [tmpMembers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VChanges" EntityType="Self.VChanges" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VChanges].[idVC] AS [idVC], 
+    [VChanges].[plant] AS [plant], 
+    [VChanges].[material] AS [material], 
+    [VChanges].[projectName] AS [projectName], 
+    [VChanges].[oldVendor] AS [oldVendor], 
+    [VChanges].[newVendor] AS [newVendor]
+    FROM [dbo].[VChanges] AS [VChanges]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MembersArea" EntityType="Self.MembersArea" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MembersArea].[idMember] AS [idMember], 
+    [MembersArea].[firstName] AS [firstName], 
+    [MembersArea].[lastName] AS [lastName], 
+    [MembersArea].[area] AS [area], 
+    [MembersArea].[displayName] AS [displayName]
+    FROM [dbo].[MembersArea] AS [MembersArea]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProjectAttachments" EntityType="Self.ProjectAttachments" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ProjectAttachments].[idAttachment] AS [idAttachment], 
+    [ProjectAttachments].[attachment] AS [attachment], 
+    [ProjectAttachments].[name] AS [name], 
+    [ProjectAttachments].[idProject] AS [idProject], 
+    [ProjectAttachments].[projectName] AS [projectName], 
+    [ProjectAttachments].[area] AS [area]
+    FROM [dbo].[ProjectAttachments] AS [ProjectAttachments]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProjectCommentsView" EntityType="Self.ProjectCommentsView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ProjectCommentsView].[idProject] AS [idProject], 
+    [ProjectCommentsView].[projectName] AS [projectName], 
+    [ProjectCommentsView].[idComment] AS [idComment], 
+    [ProjectCommentsView].[date] AS [date], 
+    [ProjectCommentsView].[comment] AS [comment], 
+    [ProjectCommentsView].[firstName] AS [firstName], 
+    [ProjectCommentsView].[lastName] AS [lastName], 
+    [ProjectCommentsView].[displayName] AS [displayName]
+    FROM [dbo].[ProjectCommentsView] AS [ProjectCommentsView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProjectMembersView" EntityType="Self.ProjectMembersView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ProjectMembersView].[projectName] AS [projectName], 
+    [ProjectMembersView].[projectDescription] AS [projectDescription], 
+    [ProjectMembersView].[area] AS [area], 
+    [ProjectMembersView].[firstName] AS [firstName], 
+    [ProjectMembersView].[lastName] AS [lastName], 
+    [ProjectMembersView].[idProject] AS [idProject], 
+    [ProjectMembersView].[idMember] AS [idMember], 
+    [ProjectMembersView].[netID] AS [netID], 
+    [ProjectMembersView].[email] AS [email], 
+    [ProjectMembersView].[endDate] AS [endDate], 
+    [ProjectMembersView].[displayName] AS [displayName]
+    FROM [dbo].[ProjectMembersView] AS [ProjectMembersView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TaskAttachments" EntityType="Self.TaskAttachments" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TaskAttachments].[idAttachment] AS [idAttachment], 
+    [TaskAttachments].[attachment] AS [attachment], 
+    [TaskAttachments].[name] AS [name], 
+    [TaskAttachments].[idProject] AS [idProject], 
+    [TaskAttachments].[projectName] AS [projectName], 
+    [TaskAttachments].[idTask] AS [idTask], 
+    [TaskAttachments].[taskName] AS [taskName]
+    FROM [dbo].[TaskAttachments] AS [TaskAttachments]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TaskCommentsView" EntityType="Self.TaskCommentsView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TaskCommentsView].[idTask] AS [idTask], 
+    [TaskCommentsView].[taskName] AS [taskName], 
+    [TaskCommentsView].[comment] AS [comment], 
+    [TaskCommentsView].[date] AS [date], 
+    [TaskCommentsView].[idComment] AS [idComment], 
+    [TaskCommentsView].[firstName] AS [firstName], 
+    [TaskCommentsView].[lastName] AS [lastName], 
+    [TaskCommentsView].[displayName] AS [displayName]
+    FROM [dbo].[TaskCommentsView] AS [TaskCommentsView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TaskHistory" EntityType="Self.TaskHistory" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TaskHistory].[comment] AS [comment], 
+    [TaskHistory].[date] AS [date], 
+    [TaskHistory].[idTask] AS [idTask]
+    FROM [dbo].[TaskHistory] AS [TaskHistory]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TaskMembersView" EntityType="Self.TaskMembersView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TaskMembersView].[idMember] AS [idMember], 
+    [TaskMembersView].[idTask] AS [idTask], 
+    [TaskMembersView].[taskName] AS [taskName], 
+    [TaskMembersView].[TaskDescription] AS [TaskDescription], 
+    [TaskMembersView].[firstName] AS [firstName], 
+    [TaskMembersView].[lastName] AS [lastName], 
+    [TaskMembersView].[email] AS [email], 
+    [TaskMembersView].[endDate] AS [endDate], 
+    [TaskMembersView].[status] AS [status], 
+    [TaskMembersView].[startDate] AS [startDate], 
+    [TaskMembersView].[netID] AS [netID], 
+    [TaskMembersView].[displayName] AS [displayName], 
+    [TaskMembersView].[projectName] AS [projectName], 
+    [TaskMembersView].[idProject] AS [idProject], 
+    [TaskMembersView].[area] AS [area]
+    FROM [dbo].[TaskMembersView] AS [TaskMembersView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TasksView" EntityType="Self.TasksView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TasksView].[taskName] AS [taskName], 
+    [TasksView].[TaskDescription] AS [TaskDescription], 
+    [TasksView].[startDate] AS [startDate], 
+    [TasksView].[endDate] AS [endDate], 
+    [TasksView].[status] AS [status], 
+    [TasksView].[projectName] AS [projectName], 
+    [TasksView].[area] AS [area], 
+    [TasksView].[idTask] AS [idTask], 
+    [TasksView].[idProject] AS [idProject]
+    FROM [dbo].[TasksView] AS [TasksView]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Attachments_Projects" Association="Self.FK_Attachments_Projects">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="Attachments" EntitySet="Attachments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Attachments_Task" Association="Self.FK_Attachments_Task">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="Attachments" EntitySet="Attachments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectComments_Comments" Association="Self.FK_ProjectComments_Comments">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="ProjectComments" EntitySet="ProjectComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectComments_Members" Association="Self.FK_ProjectComments_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="ProjectComments" EntitySet="ProjectComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectComments_Projects" Association="Self.FK_ProjectComments_Projects">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="ProjectComments" EntitySet="ProjectComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectMembers_Members" Association="Self.FK_ProjectMembers_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="ProjectMembers" EntitySet="ProjectMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectMembers_Projects" Association="Self.FK_ProjectMembers_Projects">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="ProjectMembers" EntitySet="ProjectMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectTasks_Projects" Association="Self.FK_ProjectTasks_Projects">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="ProjectTasks" EntitySet="ProjectTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectTasks_Task" Association="Self.FK_ProjectTasks_Task">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="ProjectTasks" EntitySet="ProjectTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskComments_Comments" Association="Self.FK_TaskComments_Comments">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="TaskComments" EntitySet="TaskComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskComments_Members" Association="Self.FK_TaskComments_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="TaskComments" EntitySet="TaskComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskComments_Task" Association="Self.FK_TaskComments_Task">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="TaskComments" EntitySet="TaskComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskMembers_Members" Association="Self.FK_TaskMembers_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="TaskMembers" EntitySet="TaskMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskMembers_Task" Association="Self.FK_TaskMembers_Task">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="TaskMembers" EntitySet="TaskMembers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

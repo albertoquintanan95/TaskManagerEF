@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TaskManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Attachment">
+    <Key>
+      <PropertyRef Name="idAttachment" />
+    </Key>
+    <Property Name="idAttachment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="attachment1" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ext" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idProject" Type="Int32" />
+    <Property Name="idTask" Type="Int32" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_Attachments_Projects" FromRole="Attachments" ToRole="Projects" />
+    <NavigationProperty Name="Task" Relationship="Self.FK_Attachments_Task" FromRole="Attachments" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="idComment" />
+    </Key>
+    <Property Name="idComment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ProjectComments" Relationship="Self.FK_ProjectComments_Comments" FromRole="Comments" ToRole="ProjectComments" />
+    <NavigationProperty Name="TaskComments" Relationship="Self.FK_TaskComments_Comments" FromRole="Comments" ToRole="TaskComments" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="idMember" />
+    </Key>
+    <Property Name="idMember" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="displayName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="netID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ProjectComments" Relationship="Self.FK_ProjectComments_Members" FromRole="Members" ToRole="ProjectComments" />
+    <NavigationProperty Name="ProjectMembers" Relationship="Self.FK_ProjectMembers_Members" FromRole="Members" ToRole="ProjectMembers" />
+    <NavigationProperty Name="TaskComments" Relationship="Self.FK_TaskComments_Members" FromRole="Members" ToRole="TaskComments" />
+    <NavigationProperty Name="TaskMembers" Relationship="Self.FK_TaskMembers_Members" FromRole="Members" ToRole="TaskMembers" />
+  </EntityType>
+  <EntityType Name="ProjectComment">
+    <Key>
+      <PropertyRef Name="idProjectComment" />
+    </Key>
+    <Property Name="idProjectComment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idProject" Type="Int32" Nullable="false" />
+    <Property Name="idComment" Type="Int32" Nullable="false" />
+    <Property Name="idMember" Type="Int32" />
+    <NavigationProperty Name="Comment" Relationship="Self.FK_ProjectComments_Comments" FromRole="ProjectComments" ToRole="Comments" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_ProjectComments_Members" FromRole="ProjectComments" ToRole="Members" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_ProjectComments_Projects" FromRole="ProjectComments" ToRole="Projects" />
+  </EntityType>
+  <EntityType Name="ProjectMember">
+    <Key>
+      <PropertyRef Name="idProjectMember" />
+    </Key>
+    <Property Name="idProjectMember" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idProject" Type="Int32" Nullable="false" />
+    <Property Name="idMember" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_ProjectMembers_Members" FromRole="ProjectMembers" ToRole="Members" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_ProjectMembers_Projects" FromRole="ProjectMembers" ToRole="Projects" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="idProject" />
+    </Key>
+    <Property Name="idProject" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="projectName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="projectDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="startDate" Type="DateTime" Precision="3" />
+    <Property Name="endDate" Type="DateTime" Precision="3" />
+    <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Attachments" Relationship="Self.FK_Attachments_Projects" FromRole="Projects" ToRole="Attachments" />
+    <NavigationProperty Name="ProjectComments" Relationship="Self.FK_ProjectComments_Projects" FromRole="Projects" ToRole="ProjectComments" />
+    <NavigationProperty Name="ProjectMembers" Relationship="Self.FK_ProjectMembers_Projects" FromRole="Projects" ToRole="ProjectMembers" />
+    <NavigationProperty Name="ProjectTasks" Relationship="Self.FK_ProjectTasks_Projects" FromRole="Projects" ToRole="ProjectTasks" />
+  </EntityType>
+  <EntityType Name="ProjectTask">
+    <Key>
+      <PropertyRef Name="idProjectTask" />
+    </Key>
+    <Property Name="idProjectTask" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idProject" Type="Int32" Nullable="false" />
+    <Property Name="idTask" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_ProjectTasks_Projects" FromRole="ProjectTasks" ToRole="Projects" />
+    <NavigationProperty Name="Task" Relationship="Self.FK_ProjectTasks_Task" FromRole="ProjectTasks" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="idTask" />
+    </Key>
+    <Property Name="idTask" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="taskName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TaskDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="startDate" Type="DateTime" Precision="3" />
+    <Property Name="endDate" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Attachments" Relationship="Self.FK_Attachments_Task" FromRole="Task" ToRole="Attachments" />
+    <NavigationProperty Name="ProjectTasks" Relationship="Self.FK_ProjectTasks_Task" FromRole="Task" ToRole="ProjectTasks" />
+    <NavigationProperty Name="TaskComments" Relationship="Self.FK_TaskComments_Task" FromRole="Task" ToRole="TaskComments" />
+    <NavigationProperty Name="TaskMembers" Relationship="Self.FK_TaskMembers_Task" FromRole="Task" ToRole="TaskMembers" />
+  </EntityType>
+  <EntityType Name="TaskComment">
+    <Key>
+      <PropertyRef Name="idTaskComment" />
+    </Key>
+    <Property Name="idTaskComment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTask" Type="Int32" Nullable="false" />
+    <Property Name="idComment" Type="Int32" Nullable="false" />
+    <Property Name="idMember" Type="Int32" />
+    <NavigationProperty Name="Comment" Relationship="Self.FK_TaskComments_Comments" FromRole="TaskComments" ToRole="Comments" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_TaskComments_Members" FromRole="TaskComments" ToRole="Members" />
+    <NavigationProperty Name="Task" Relationship="Self.FK_TaskComments_Task" FromRole="TaskComments" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="TaskMember">
+    <Key>
+      <PropertyRef Name="idTaskMember" />
+    </Key>
+    <Property Name="idTaskMember" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTask" Type="Int32" />
+    <Property Name="idMember" Type="Int32" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_TaskMembers_Members" FromRole="TaskMembers" ToRole="Members" />
+    <NavigationProperty Name="Task" Relationship="Self.FK_TaskMembers_Task" FromRole="TaskMembers" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="tmpMember">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="netID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VChanx">
+    <Key>
+      <PropertyRef Name="idVC" />
+    </Key>
+    <Property Name="idVC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="plant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="projectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="oldVendor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="newVendor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MembersArea">
+    <Key>
+      <PropertyRef Name="idMember" />
+      <PropertyRef Name="firstName" />
+      <PropertyRef Name="lastName" />
+    </Key>
+    <Property Name="idMember" Type="Int32" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="displayName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ProjectAttachment">
+    <Key>
+      <PropertyRef Name="idAttachment" />
+      <PropertyRef Name="idProject" />
+      <PropertyRef Name="projectName" />
+    </Key>
+    <Property Name="idAttachment" Type="Int32" Nullable="false" />
+    <Property Name="attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idProject" Type="Int32" Nullable="false" />
+    <Property Name="projectName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ProjectCommentsView">
+    <Key>
+      <PropertyRef Name="idProject" />
+      <PropertyRef Name="projectName" />
+      <PropertyRef Name="idComment" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="comment" />
+      <PropertyRef Name="firstName" />
+      <PropertyRef Name="lastName" />
+    </Key>
+    <Property Name="idProject" Type="Int32" Nullable="false" />
+    <Property Name="projectName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idComment" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="displayName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ProjectMembersView">
+    <Key>
+      <PropertyRef Name="projectName" />
+      <PropertyRef Name="projectDescription" />
+      <PropertyRef Name="firstName" />
+      <PropertyRef Name="lastName" />
+      <PropertyRef Name="idProject" />
+      <PropertyRef Name="idMember" />
+      <PropertyRef Name="netID" />
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="projectName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="projectDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idProject" Type="Int32" Nullable="false" />
+    <Property Name="idMember" Type="Int32" Nullable="false" />
+    <Property Name="netID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="endDate" Type="DateTime" Precision="3" />
+    <Property Name="displayName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TaskAttachment">
+    <Key>
+      <PropertyRef Name="idAttachment" />
+      <PropertyRef Name="idProject" />
+      <PropertyRef Name="projectName" />
+      <PropertyRef Name="idTask" />
+      <PropertyRef Name="taskName" />
+    </Key>
+    <Property Name="idAttachment" Type="Int32" Nullable="false" />
+    <Property Name="attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idProject" Type="Int32" Nullable="false" />
+    <Property Name="projectName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idTask" Type="Int32" Nullable="false" />
+    <Property Name="taskName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaskCommentsView">
+    <Key>
+      <PropertyRef Name="idTask" />
+      <PropertyRef Name="taskName" />
+      <PropertyRef Name="comment" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="idComment" />
+      <PropertyRef Name="firstName" />
+      <PropertyRef Name="lastName" />
+    </Key>
+    <Property Name="idTask" Type="Int32" Nullable="false" />
+    <Property Name="taskName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idComment" Type="Int32" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="displayName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TaskHistory">
+    <Key>
+      <PropertyRef Name="comment" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="idTask" />
+    </Key>
+    <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="idTask" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaskMembersView">
+    <Key>
+      <PropertyRef Name="idMember" />
+      <PropertyRef Name="idTask" />
+      <PropertyRef Name="taskName" />
+      <PropertyRef Name="TaskDescription" />
+      <PropertyRef Name="firstName" />
+      <PropertyRef Name="lastName" />
+      <PropertyRef Name="email" />
+      <PropertyRef Name="netID" />
+      <PropertyRef Name="projectName" />
+      <PropertyRef Name="idProject" />
+    </Key>
+    <Property Name="idMember" Type="Int32" Nullable="false" />
+    <Property Name="idTask" Type="Int32" Nullable="false" />
+    <Property Name="taskName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TaskDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="endDate" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="startDate" Type="DateTime" Precision="3" />
+    <Property Name="netID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="displayName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="projectName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idProject" Type="Int32" Nullable="false" />
+    <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TasksView">
+    <Key>
+      <PropertyRef Name="taskName" />
+      <PropertyRef Name="TaskDescription" />
+      <PropertyRef Name="projectName" />
+      <PropertyRef Name="idTask" />
+      <PropertyRef Name="idProject" />
+    </Key>
+    <Property Name="taskName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TaskDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="startDate" Type="DateTime" Precision="3" />
+    <Property Name="endDate" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="projectName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idTask" Type="Int32" Nullable="false" />
+    <Property Name="idProject" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Attachments_Projects">
+    <End Role="Projects" Type="Self.Project" Multiplicity="0..1" />
+    <End Role="Attachments" Type="Self.Attachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="idProject" />
+      </Principal>
+      <Dependent Role="Attachments">
+        <PropertyRef Name="idProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Attachments_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+    <End Role="Attachments" Type="Self.Attachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="idTask" />
+      </Principal>
+      <Dependent Role="Attachments">
+        <PropertyRef Name="idTask" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectComments_Comments">
+    <End Role="Comments" Type="Self.Comment" Multiplicity="1" />
+    <End Role="ProjectComments" Type="Self.ProjectComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comments">
+        <PropertyRef Name="idComment" />
+      </Principal>
+      <Dependent Role="ProjectComments">
+        <PropertyRef Name="idComment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskComments_Comments">
+    <End Role="Comments" Type="Self.Comment" Multiplicity="1" />
+    <End Role="TaskComments" Type="Self.TaskComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comments">
+        <PropertyRef Name="idComment" />
+      </Principal>
+      <Dependent Role="TaskComments">
+        <PropertyRef Name="idComment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectComments_Members">
+    <End Role="Members" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="ProjectComments" Type="Self.ProjectComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="idMember" />
+      </Principal>
+      <Dependent Role="ProjectComments">
+        <PropertyRef Name="idMember" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectMembers_Members">
+    <End Role="Members" Type="Self.Member" Multiplicity="1" />
+    <End Role="ProjectMembers" Type="Self.ProjectMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="idMember" />
+      </Principal>
+      <Dependent Role="ProjectMembers">
+        <PropertyRef Name="idMember" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskComments_Members">
+    <End Role="Members" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="TaskComments" Type="Self.TaskComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="idMember" />
+      </Principal>
+      <Dependent Role="TaskComments">
+        <PropertyRef Name="idMember" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskMembers_Members">
+    <End Role="Members" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="TaskMembers" Type="Self.TaskMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="idMember" />
+      </Principal>
+      <Dependent Role="TaskMembers">
+        <PropertyRef Name="idMember" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectComments_Projects">
+    <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+    <End Role="ProjectComments" Type="Self.ProjectComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="idProject" />
+      </Principal>
+      <Dependent Role="ProjectComments">
+        <PropertyRef Name="idProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectMembers_Projects">
+    <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+    <End Role="ProjectMembers" Type="Self.ProjectMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="idProject" />
+      </Principal>
+      <Dependent Role="ProjectMembers">
+        <PropertyRef Name="idProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectTasks_Projects">
+    <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+    <End Role="ProjectTasks" Type="Self.ProjectTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="idProject" />
+      </Principal>
+      <Dependent Role="ProjectTasks">
+        <PropertyRef Name="idProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectTasks_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="ProjectTasks" Type="Self.ProjectTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="idTask" />
+      </Principal>
+      <Dependent Role="ProjectTasks">
+        <PropertyRef Name="idTask" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskComments_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="TaskComments" Type="Self.TaskComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="idTask" />
+      </Principal>
+      <Dependent Role="TaskComments">
+        <PropertyRef Name="idTask" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskMembers_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+    <End Role="TaskMembers" Type="Self.TaskMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="idTask" />
+      </Principal>
+      <Dependent Role="TaskMembers">
+        <PropertyRef Name="idTask" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TaskManagerEntities_DB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Attachments" EntityType="Self.Attachment" />
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="Members" EntityType="Self.Member" />
+    <EntitySet Name="ProjectComments" EntityType="Self.ProjectComment" />
+    <EntitySet Name="ProjectMembers" EntityType="Self.ProjectMember" />
+    <EntitySet Name="Projects" EntityType="Self.Project" />
+    <EntitySet Name="ProjectTasks" EntityType="Self.ProjectTask" />
+    <EntitySet Name="Tasks" EntityType="Self.Task" />
+    <EntitySet Name="TaskComments" EntityType="Self.TaskComment" />
+    <EntitySet Name="TaskMembers" EntityType="Self.TaskMember" />
+    <EntitySet Name="tmpMembers" EntityType="Self.tmpMember" />
+    <EntitySet Name="VChanges" EntityType="Self.VChanx" />
+    <EntitySet Name="MembersAreas" EntityType="Self.MembersArea" />
+    <EntitySet Name="ProjectAttachments" EntityType="Self.ProjectAttachment" />
+    <EntitySet Name="ProjectCommentsViews" EntityType="Self.ProjectCommentsView" />
+    <EntitySet Name="ProjectMembersViews" EntityType="Self.ProjectMembersView" />
+    <EntitySet Name="TaskAttachments" EntityType="Self.TaskAttachment" />
+    <EntitySet Name="TaskCommentsViews" EntityType="Self.TaskCommentsView" />
+    <EntitySet Name="TaskHistories" EntityType="Self.TaskHistory" />
+    <EntitySet Name="TaskMembersViews" EntityType="Self.TaskMembersView" />
+    <EntitySet Name="TasksViews" EntityType="Self.TasksView" />
+    <AssociationSet Name="FK_Attachments_Projects" Association="Self.FK_Attachments_Projects">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="Attachments" EntitySet="Attachments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Attachments_Task" Association="Self.FK_Attachments_Task">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="Attachments" EntitySet="Attachments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectComments_Comments" Association="Self.FK_ProjectComments_Comments">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="ProjectComments" EntitySet="ProjectComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskComments_Comments" Association="Self.FK_TaskComments_Comments">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="TaskComments" EntitySet="TaskComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectComments_Members" Association="Self.FK_ProjectComments_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="ProjectComments" EntitySet="ProjectComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectMembers_Members" Association="Self.FK_ProjectMembers_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="ProjectMembers" EntitySet="ProjectMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskComments_Members" Association="Self.FK_TaskComments_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="TaskComments" EntitySet="TaskComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskMembers_Members" Association="Self.FK_TaskMembers_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="TaskMembers" EntitySet="TaskMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectComments_Projects" Association="Self.FK_ProjectComments_Projects">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="ProjectComments" EntitySet="ProjectComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectMembers_Projects" Association="Self.FK_ProjectMembers_Projects">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="ProjectMembers" EntitySet="ProjectMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectTasks_Projects" Association="Self.FK_ProjectTasks_Projects">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="ProjectTasks" EntitySet="ProjectTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectTasks_Task" Association="Self.FK_ProjectTasks_Task">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="ProjectTasks" EntitySet="ProjectTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskComments_Task" Association="Self.FK_TaskComments_Task">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="TaskComments" EntitySet="TaskComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskMembers_Task" Association="Self.FK_TaskMembers_Task">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="TaskMembers" EntitySet="TaskMembers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="TaskManagerEF.Views.AddProjectsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="700"
+             d:DesignWidth="1000">
+    <Grid Background="#FFF1F1F1">
+        <Border BorderBrush="#FFFFFFFF" BorderThickness="3" CornerRadius="5" Margin="15" Grid.Column="1">
+            <Grid Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="300*"/>
+                </Grid.RowDefinitions>
+                <WrapPanel HorizontalAlignment="center" VerticalAlignment="Top" Grid.Row="1">
+                    <Button x:Name="btnPC" HorizontalAlignment="Left" VerticalAlignment="Top" Height="180" Background="Transparent" Foreground="White" FontSize="24" HorizontalContentAlignment="Left" BorderThickness="0" Width="150" Margin="5" Grid.RowSpan="2" Click="btnPC_Click">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="150" Height="180">
+                            <Image Margin="0" Source="Images/icons8-robot-96.png" Stretch="Uniform" Width="100" Height="100" VerticalAlignment="Top"/>
+                            <TextBlock Foreground="Black" Height="60" TextAlignment="Center" FontSize="18"><Run Text="Production "/><LineBreak/><Run Text="Control"/></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnSCM" HorizontalAlignment="Left" VerticalAlignment="Top" Height="180" Background="Transparent" Foreground="White" FontSize="24" HorizontalContentAlignment="Left" BorderThickness="0" Width="150" Margin="5" Grid.RowSpan="2" Click="btnSCM_Click">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="150" Height="180">
+                            <Image Margin="0" Source="Images/icons8-descending-sorting-96.png" Stretch="Uniform" Width="100" Height="100" VerticalAlignment="Top"/>
+                            <TextBlock Foreground="Black" Height="60" TextAlignment="Center" FontSize="18"><Run Text="Scheduling "/></TextBlock>
+                        </StackPanel>
+                    </Button>
+                </WrapPanel>
+
+
+                <!--<Button x:Name="btnBack" HorizontalAlignment="Left" Height="74" Margin="15,8,0,0" VerticalAlignment="Top" Width="226" BorderThickness="0" Background="White" Click="btnBack_Click">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="63" Width="201">
+                <Image Margin="10,4" Source="Images/icons8-go-back-96.png" Stretch="Uniform" Width="53" />
+                <TextBlock Margin="0,19,0,0" Width="123" FontSize="18"><Run Text="Back Home" Block.TextAlignment="Center"/></TextBlock>
+            </StackPanel>
+        </Button>-->
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Width="125" TextWrapping="Wrap" Text="Project Areas" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

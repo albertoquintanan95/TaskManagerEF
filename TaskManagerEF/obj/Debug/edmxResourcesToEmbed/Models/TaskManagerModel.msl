@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TaskManagerModelStoreContainer" CdmEntityContainer="TaskManagerEntities_DB">
+    <EntitySetMapping Name="Attachments">
+      <EntityTypeMapping TypeName="TaskManagerModel.Attachment">
+        <MappingFragment StoreEntitySet="Attachments">
+          <ScalarProperty Name="idAttachment" ColumnName="idAttachment" />
+          <ScalarProperty Name="attachment1" ColumnName="attachment" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ext" ColumnName="ext" />
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="idTask" ColumnName="idTask" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="TaskManagerModel.Comment">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="idComment" ColumnName="idComment" />
+          <ScalarProperty Name="comment1" ColumnName="comment" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="TaskManagerModel.Member">
+        <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="idMember" ColumnName="idMember" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="displayName" ColumnName="displayName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="netID" ColumnName="netID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectComments">
+      <EntityTypeMapping TypeName="TaskManagerModel.ProjectComment">
+        <MappingFragment StoreEntitySet="ProjectComments">
+          <ScalarProperty Name="idProjectComment" ColumnName="idProjectComment" />
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="idComment" ColumnName="idComment" />
+          <ScalarProperty Name="idMember" ColumnName="idMember" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectMembers">
+      <EntityTypeMapping TypeName="TaskManagerModel.ProjectMember">
+        <MappingFragment StoreEntitySet="ProjectMembers">
+          <ScalarProperty Name="idProjectMember" ColumnName="idProjectMember" />
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="idMember" ColumnName="idMember" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="TaskManagerModel.Project">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="projectName" ColumnName="projectName" />
+          <ScalarProperty Name="projectDescription" ColumnName="projectDescription" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="area" ColumnName="area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectTasks">
+      <EntityTypeMapping TypeName="TaskManagerModel.ProjectTask">
+        <MappingFragment StoreEntitySet="ProjectTasks">
+          <ScalarProperty Name="idProjectTask" ColumnName="idProjectTask" />
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="idTask" ColumnName="idTask" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="TaskManagerModel.Task">
+        <MappingFragment StoreEntitySet="Task">
+          <ScalarProperty Name="idTask" ColumnName="idTask" />
+          <ScalarProperty Name="taskName" ColumnName="taskName" />
+          <ScalarProperty Name="TaskDescription" ColumnName="TaskDescription" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskComments">
+      <EntityTypeMapping TypeName="TaskManagerModel.TaskComment">
+        <MappingFragment StoreEntitySet="TaskComments">
+          <ScalarProperty Name="idTaskComment" ColumnName="idTaskComment" />
+          <ScalarProperty Name="idTask" ColumnName="idTask" />
+          <ScalarProperty Name="idComment" ColumnName="idComment" />
+          <ScalarProperty Name="idMember" ColumnName="idMember" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskMembers">
+      <EntityTypeMapping TypeName="TaskManagerModel.TaskMember">
+        <MappingFragment StoreEntitySet="TaskMembers">
+          <ScalarProperty Name="idTaskMember" ColumnName="idTaskMember" />
+          <ScalarProperty Name="idTask" ColumnName="idTask" />
+          <ScalarProperty Name="idMember" ColumnName="idMember" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tmpMembers">
+      <EntityTypeMapping TypeName="TaskManagerModel.tmpMember">
+        <MappingFragment StoreEntitySet="tmpMembers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="netID" ColumnName="netID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VChanges">
+      <EntityTypeMapping TypeName="TaskManagerModel.VChanx">
+        <MappingFragment StoreEntitySet="VChanges">
+          <ScalarProperty Name="idVC" ColumnName="idVC" />
+          <ScalarProperty Name="plant" ColumnName="plant" />
+          <ScalarProperty Name="material" ColumnName="material" />
+          <ScalarProperty Name="projectName" ColumnName="projectName" />
+          <ScalarProperty Name="oldVendor" ColumnName="oldVendor" />
+          <ScalarProperty Name="newVendor" ColumnName="newVendor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MembersAreas">
+      <EntityTypeMapping TypeName="TaskManagerModel.MembersArea">
+        <MappingFragment StoreEntitySet="MembersArea">
+          <ScalarProperty Name="idMember" ColumnName="idMember" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="displayName" ColumnName="displayName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectAttachments">
+      <EntityTypeMapping TypeName="TaskManagerModel.ProjectAttachment">
+        <MappingFragment StoreEntitySet="ProjectAttachments">
+          <ScalarProperty Name="idAttachment" ColumnName="idAttachment" />
+          <ScalarProperty Name="attachment" ColumnName="attachment" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="projectName" ColumnName="projectName" />
+          <ScalarProperty Name="area" ColumnName="area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectCommentsViews">
+      <EntityTypeMapping TypeName="TaskManagerModel.ProjectCommentsView">
+        <MappingFragment StoreEntitySet="ProjectCommentsView">
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="projectName" ColumnName="projectName" />
+          <ScalarProperty Name="idComment" ColumnName="idComment" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="displayName" ColumnName="displayName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectMembersViews">
+      <EntityTypeMapping TypeName="TaskManagerModel.ProjectMembersView">
+        <MappingFragment StoreEntitySet="ProjectMembersView">
+          <ScalarProperty Name="projectName" ColumnName="projectName" />
+          <ScalarProperty Name="projectDescription" ColumnName="projectDescription" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="idMember" ColumnName="idMember" />
+          <ScalarProperty Name="netID" ColumnName="netID" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="displayName" ColumnName="displayName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskAttachments">
+      <EntityTypeMapping TypeName="TaskManagerModel.TaskAttachment">
+        <MappingFragment StoreEntitySet="TaskAttachments">
+          <ScalarProperty Name="idAttachment" ColumnName="idAttachment" />
+          <ScalarProperty Name="attachment" ColumnName="attachment" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="projectName" ColumnName="projectName" />
+          <ScalarProperty Name="idTask" ColumnName="idTask" />
+          <ScalarProperty Name="taskName" ColumnName="taskName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskCommentsViews">
+      <EntityTypeMapping TypeName="TaskManagerModel.TaskCommentsView">
+        <MappingFragment StoreEntitySet="TaskCommentsView">
+          <ScalarProperty Name="idTask" ColumnName="idTask" />
+          <ScalarProperty Name="taskName" ColumnName="taskName" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="idComment" ColumnName="idComment" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="displayName" ColumnName="displayName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskHistories">
+      <EntityTypeMapping TypeName="TaskManagerModel.TaskHistory">
+        <MappingFragment StoreEntitySet="TaskHistory">
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="idTask" ColumnName="idTask" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskMembersViews">
+      <EntityTypeMapping TypeName="TaskManagerModel.TaskMembersView">
+        <MappingFragment StoreEntitySet="TaskMembersView">
+          <ScalarProperty Name="idMember" ColumnName="idMember" />
+          <ScalarProperty Name="idTask" ColumnName="idTask" />
+          <ScalarProperty Name="taskName" ColumnName="taskName" />
+          <ScalarProperty Name="TaskDescription" ColumnName="TaskDescription" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="netID" ColumnName="netID" />
+          <ScalarProperty Name="displayName" ColumnName="displayName" />
+          <ScalarProperty Name="projectName" ColumnName="projectName" />
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="area" ColumnName="area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TasksViews">
+      <EntityTypeMapping TypeName="TaskManagerModel.TasksView">
+        <MappingFragment StoreEntitySet="TasksView">
+          <ScalarProperty Name="taskName" ColumnName="taskName" />
+          <ScalarProperty Name="TaskDescription" ColumnName="TaskDescription" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="projectName" ColumnName="projectName" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="idTask" ColumnName="idTask" />
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0be081cd91364681830a95e2dd00d231" Name="Diagram1">
+        <EntityTypeShape EntityType="TaskManagerModel.Attachment" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.Comment" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.Member" Width="1.5" PointX="3.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.ProjectComment" Width="1.5" PointX="7" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.ProjectMember" Width="1.5" PointX="9" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.Project" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.ProjectTask" Width="1.5" PointX="3.125" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.Task" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.TaskComment" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.TaskMember" Width="1.5" PointX="1.875" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.tmpMember" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.VChanx" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.MembersArea" Width="1.5" PointX="8.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.ProjectAttachment" Width="1.5" PointX="9.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.ProjectCommentsView" Width="1.5" PointX="10.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.ProjectMembersView" Width="1.5" PointX="8.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.TaskAttachment" Width="1.5" PointX="10.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.TaskCommentsView" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.TaskHistory" Width="1.5" PointX="11.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.TaskMembersView" Width="1.875" PointX="12.375" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.TasksView" Width="1.5" PointX="5.75" PointY="13.375" IsExpanded="true" />
+        <AssociationConnector Association="TaskManagerModel.FK_Attachments_Projects" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_Attachments_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_ProjectComments_Comments" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_TaskComments_Comments" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_ProjectComments_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_ProjectMembers_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_TaskComments_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_TaskMembers_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_ProjectComments_Projects" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_ProjectMembers_Projects" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_ProjectTasks_Projects" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_ProjectTasks_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_TaskComments_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_TaskMembers_Task" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

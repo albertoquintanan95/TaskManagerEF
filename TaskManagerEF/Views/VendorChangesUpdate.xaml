@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="TaskManagerEF.Views.VendorChangesUpdate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TaskManagerEF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="590*"/>
+            <ColumnDefinition Width="611*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="51*"/>
+            <RowDefinition Height="349*"/>
+        </Grid.RowDefinitions>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.ColumnSpan="2">
+            <TextBlock x:Name="tbTitle" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="32" Text="Vendor Changes" VerticalAlignment="Center" FontWeight="Bold"/>
+        </Grid>
+        <Grid x:Name="PasteLayer" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0">
+            <StackPanel>
+                <TextBlock x:Name="tbPartsToChange" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="Parts to change" FontSize="24" VerticalAlignment="Top" Grid.Column="1"/>
+
+                <ListView x:Name="lvParts" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="300" MaxHeight="500" Width="380" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Plant" Width="45" DisplayMemberBinding="{Binding plant}" />
+                            <GridViewColumn Header="Part Number" Width="90" DisplayMemberBinding="{Binding part}" />
+                            <GridViewColumn Header="Agreement" Width="80" DisplayMemberBinding="{Binding agreement}" />
+                            <GridViewColumn Header="Item" Width="50" DisplayMemberBinding="{Binding item}" />
+                            <GridViewColumn Header="Vendor" Width="98" DisplayMemberBinding="{Binding vendor}" />
+                            <!--<GridViewColumn/>-->
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="btnPaste" Content="Paste" HorizontalAlignment="Right"  Grid.Row="1" VerticalAlignment="Top" Width="76" Click="btnPaste_Click"/>
+            </StackPanel>
+           
+        </Grid>
+
+
+        <Grid x:Name="ErrorLayer" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1">
+            <StackPanel>
+                <TextBlock x:Name="tbError" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="Error parts" FontSize="24" VerticalAlignment="Top" Grid.Column="1"/>
+
+                <ListView x:Name="lvErrorParts" HorizontalAlignment="Center" VerticalAlignment="Center" Width="380" MaxHeight="500" MinHeight="300" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Plant" Width="45" DisplayMemberBinding="{Binding plant}" />
+                            <GridViewColumn Header="Part Number" Width="90" DisplayMemberBinding="{Binding part}" />
+                            <GridViewColumn Header="Agreement" Width="80" DisplayMemberBinding="{Binding agreement}" />
+                            <GridViewColumn Header="Item" Width="50" DisplayMemberBinding="{Binding item}" />
+                            <GridViewColumn Header="Vendor" Width="98" DisplayMemberBinding="{Binding vendor}" />
+                            <!--<GridViewColumn/>-->
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Button x:Name="btnContinuar" Content="Next Step" HorizontalAlignment="Right" Click="btnContinuar_Click" Grid.Row="1" VerticalAlignment="Top" Width="76"/>
+
+            </StackPanel>
+       </Grid>
+
+        <Grid x:Name="VendorsLayer" Visibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="90*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0">
+                    <TextBlock x:Name="tbTitle1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Current Vendor" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                </Grid>
+
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="1">
+                    <StackPanel HorizontalAlignment="Center" Margin="20" VerticalAlignment="Stretch" Orientation="Vertical">
+                        <TextBlock x:Name="tbVendorNumer" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Vendor Number" VerticalAlignment="Top" Width="220"/>
+                        <TextBox x:Name="txtVendorNumber" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbVendorName" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="Vendor Name" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtVendorName" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbDUNS" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="DUNS" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtDUNS" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbCN" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="Country" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtCN" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbFrom" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="ValidFrom" VerticalAlignment="Top"/>
+                        <DatePicker x:Name="txtFrom" HorizontalAlignment="Stretch" Height="23" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbTo" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Valid To" VerticalAlignment="Top"/>
+                        <DatePicker x:Name="txtTo" HorizontalAlignment="Stretch" Height="23"  VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbFixed" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="FIxed" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtFixed" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbGRPT" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="GRPT" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtGRPT" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbPC" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Planning Calendar" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtPC" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbPCDes" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Planning Calendar Description" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtPCDes" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+                        <TextBlock x:Name="lbOrdering" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Ordering system" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtOrdering" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbLO" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Lean Ordering" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtLO" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbSRT" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Supplier Response Time" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtSRT" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+
+                    </StackPanel>
+                </Grid>
+
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1">
+                    <TextBlock x:Name="tbTitle2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="New Vendor" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                </Grid>
+
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="1">
+                    <StackPanel HorizontalAlignment="Center" Margin="20" VerticalAlignment="Stretch" Orientation="Vertical">
+                        <TextBlock x:Name="tbNewVendorNumer" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Vendor Number" VerticalAlignment="Top" Width="220"/>
+                        <TextBox x:Name="txtNewVendorNumber" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="txtNewVendorNumber_TextChanged"/>
+                        <TextBlock x:Name="tbNewVendorName" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="Vendor Name" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtNewVendorName" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbNewDUNS" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="DUNS" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtNewDUNS" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbNewCN" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="Country" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtNewCN" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbNewFixed" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="FIxed" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtNewFixed" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbNewGRPT" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="GRPT" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtNewGRPT" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbNewvPC" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Planning Calendar" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtNewPC" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbNewPCDes" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Planning Calendar Description" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtNewPCDes" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+                        <TextBlock x:Name="lbNewOrdering" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Ordering system" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtNewOrdering" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbNewLO" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Lean Ordering" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtNewLO" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+                        <TextBlock x:Name="tbNewSRT" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Supplier Response Time" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtNewSRT" HorizontalAlignment="Stretch" Height="23"  TextWrapping="Wrap"  VerticalAlignment="Top"/>
+                        <Button x:Name="btnSend" Content="Create" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#FF0074B6" Foreground="White" BorderThickness="0" Height="35"  Margin="0,10" Click="btnSend_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
