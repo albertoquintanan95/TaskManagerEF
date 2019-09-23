@@ -186,9 +186,6 @@
     <Compile Include="Views\AddProjectsView.xaml.cs">
       <DependentUpon>AddProjectsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\eocha.xaml.cs">
-      <DependentUpon>eocha.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\FinishedProjectsView.xaml.cs">
       <DependentUpon>FinishedProjectsView.xaml</DependentUpon>
     </Compile>
@@ -238,10 +235,6 @@
     <Page Include="Views\AddProjectsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\eocha.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FinishedProjectsView.xaml">
       <Generator>MSBuild:Compile</Generator>
